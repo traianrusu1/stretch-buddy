@@ -14,8 +14,9 @@ const sound = require('../../../assets/sounds/pristine.mp3');
 // }
 
 const Controls: React.FC = () => {
-  const [timer, setTimer] = useState<NodeJS.Timeout | undefined>();
-  // const [countDown, setCountDown] = useState<number | undefined>();
+  const [timer] = useState<NodeJS.Timeout | undefined>();
+  const [countDownTime, setCountDownTime] = useState<number>(0);
+  const [countDownTimer, setCountDownTimer] = useState<NodeJS.Timeout | undefined>();
 
   // const audio = new Audio('/src/assets/sounds/pristine.mp3');
   const layout = {
@@ -43,11 +44,24 @@ const Controls: React.FC = () => {
 
   const start = (values: Store): void => {
     playSound();
-    setTimer(setInterval(playSound, values.seconds || 5 * 1000));
+    setCountDownTime(values.seconds);
+    setCountDownTimer(
+      setInterval(() => {
+        setCountDownTime((prevVal: number) => {
+          if (prevVal === 1) {
+            playSound();
+            return values.seconds;
+          }
+          return prevVal - 1;
+        });
+      }, 1000),
+    );
+    // setTimer(setInterval(playSound, values.seconds * 1000));
   };
 
   const stop = (): void => {
     clearInterval(timer as any);
+    clearInterval(countDownTimer as any);
   };
 
   const onFinish = (values: Store): void => {
@@ -65,7 +79,7 @@ const Controls: React.FC = () => {
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...layout}
         name="basic"
-        initialValues={{ remember: true }}
+        initialValues={{ seconds: 10 }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
@@ -74,7 +88,7 @@ const Controls: React.FC = () => {
           name="seconds"
           // rules={[{ required: true, message: 'Please input your username!' }]}
         >
-          <InputNumber min={1} max={10} defaultValue={3} />
+          <InputNumber min={1} />
         </Form.Item>
         {/* <Form.Item label="Input">
           <Input />
@@ -94,12 +108,12 @@ const Controls: React.FC = () => {
           <Button {...tailLayout} type="primary" htmlType="submit">
             Start
           </Button>{' '}
+          <Button {...tailLayout} type="primary" htmlType="button" onClick={stop}>
+            Stop
+          </Button>
         </Form.Item>
-        <Button {...tailLayout} type="primary" htmlType="button" onClick={stop}>
-          Stop
-        </Button>
       </Form>
-      {/* {countDown} */}
+      <div className={styles.timeDisplay}>{countDownTime}</div>
     </div>
   );
 };
