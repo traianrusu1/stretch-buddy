@@ -1,8 +1,17 @@
 .controls {
   .timeDisplay {
-    font-size: 50px;
-    width: 20px;
+    font-size: 70px;
+    width: 13px;
 
     margin: 20px auto 20px auto;
+  }
+
+  .bigButtons {
+    height: 60px;
+    width: 100px;
+  }
+
+  .buttons {
+    padding-top: 20px;
   }
 }
