@@ -2,11 +2,14 @@
 import React, { useState } from 'react';
 import { Form, Button, InputNumber } from 'antd';
 import { Store } from 'antd/lib/form/interface';
+import NoSleep from 'nosleep.js';
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
 import styles from './Controls.module.scss';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const sound = require('../../../assets/sounds/pristine.mp3');
+// const  NoSleep = require('nosleep.js');
+
 // import '../../../assets/sounds/pristine.mp3';
 
 // interface Props {
@@ -17,6 +20,7 @@ const Controls: React.FC = () => {
   const [timer] = useState<NodeJS.Timeout | undefined>();
   const [countDownTime, setCountDownTime] = useState<number>(0);
   const [countDownTimer, setCountDownTimer] = useState<NodeJS.Timeout | undefined>();
+  const noSleep = new NoSleep();
 
   // const audio = new Audio('/src/assets/sounds/pristine.mp3');
   const layout = {
@@ -45,6 +49,7 @@ const Controls: React.FC = () => {
   const start = (values: Store): void => {
     playSound();
     setCountDownTime(values.seconds);
+    noSleep.enable();
     setCountDownTimer(
       setInterval(() => {
         setCountDownTime((prevVal: number) => {
