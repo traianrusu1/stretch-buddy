@@ -25,9 +25,16 @@ const Timer: React.FC<Props> = ({ seconds, timeInbetween, sound, playSound }: Pr
     timer.start({ countdown: true, startValues: { seconds } });
     noSleep.enable();
   };
+
   const handleStop = (): void => {
     console.log('TIMER Stop');
     timer.pause();
+    noSleep.disable();
+  };
+
+  const handleReset = (): void => {
+    console.log('TIMER Reset');
+    timer.reset();
     noSleep.disable();
   };
 
@@ -73,7 +80,7 @@ const Timer: React.FC<Props> = ({ seconds, timeInbetween, sound, playSound }: Pr
 
   return (
     <div className={styles.timer}>
-      <Row justify="center" className={styles.buttons}>
+      <Row justify="space-between" className={styles.buttons}>
         <Col>
           <Button
             type="primary"
@@ -85,7 +92,19 @@ const Timer: React.FC<Props> = ({ seconds, timeInbetween, sound, playSound }: Pr
             Start
           </Button>
         </Col>
-        <Col span={1} />
+        <Col>
+          <Button
+            type="primary"
+            htmlType="button"
+            size="large"
+            danger
+            onClick={handleReset}
+            className={styles.bigButtons}
+          >
+            Reset
+          </Button>
+        </Col>
+        {/* <Col span={1} /> */}
         <Col>
           <Button
             type="primary"
