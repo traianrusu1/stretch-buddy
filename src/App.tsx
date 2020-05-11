@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Layout } from 'antd';
+import { Layout, Row, Col } from 'antd';
 import { Dashboard } from './components';
 
 const { Header, Content } = Layout;
@@ -17,13 +17,16 @@ const App: React.FC = () => {
             <Menu.Item key="3">nav 3</Menu.Item>
           </Menu> */}
         </Header>
-        <Content style={{ padding: '20px 50px', backgroundColor: '#fff' }}>
-          <div className="site-layout-content">
-            <Dashboard />
-          </div>
+        <Content style={{ paddingTop: '20px', backgroundColor: '#fff' }}>
+          <Row justify="center">
+            <Col xs={22} sm={20} md={12} lg={8} xl={6}>
+              <div className="site-layout-content">
+                <Dashboard />
+              </div>
+            </Col>
+          </Row>
         </Content>
       </Layout>
-      ,
     </div>
   );
 };

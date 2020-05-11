@@ -12,6 +12,7 @@
 
   .quickButton {
     margin-right: 5px;
+    margin-bottom: 5px;
   }
 
   .quickButtonsContainer {
@@ -19,8 +20,12 @@
   }
 
   .soundInput {
-    width: 300px;
+    width: 100%;
   }
+
+  // .soundInput {
+  //   width: 100%;
+  // }
 
   .bottomSpacer {
     margin-bottom: 30px;

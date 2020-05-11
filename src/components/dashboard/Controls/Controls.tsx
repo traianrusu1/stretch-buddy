@@ -231,7 +231,14 @@ const Controls: React.FC = () => {
 
       {/* <Form.Item label="Sound" name="sound" initialValue={timerSound}> */}
       <Row className={styles.bottomSpacer}>
-        <Col className={styles.inputContainer}>
+        <Col
+          className={[styles.inputContainer, styles.soundInput].join(' ')}
+          xs={24}
+          // sm={20}
+          // md={8}
+          // lg={6}
+          // xl={4}
+        >
           Sound
           <Select value={timerSound} className={styles.soundInput} onChange={handleSoundChange}>
             <Select.Option value="beyond-doubt">beyond-doubt</Select.Option>
