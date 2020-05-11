@@ -1,7 +1,11 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Row, Col, Button } from 'antd';
 import EasyTimer from 'easytimer.js';
+import NoSleep from 'nosleep.js';
+
 import styles from './Timer.module.scss';
+
+const noSleep = new NoSleep();
 
 interface Props {
   seconds: number;
@@ -19,10 +23,12 @@ const Timer: React.FC<Props> = ({ seconds, timeInbetween, sound, playSound }: Pr
   const handleStart = (): void => {
     console.log('TIMER Start');
     timer.start({ countdown: true, startValues: { seconds } });
+    noSleep.enable();
   };
   const handleStop = (): void => {
     console.log('TIMER Stop');
     timer.pause();
+    noSleep.disable();
   };
 
   const handleTargetAchieved = useCallback((): void => {

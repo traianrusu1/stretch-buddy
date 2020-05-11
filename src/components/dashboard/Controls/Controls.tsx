@@ -5,7 +5,6 @@
 import React, { useState } from 'react';
 import { InputNumber, Select, Row, Col, Button } from 'antd';
 // import { Store } from 'antd/lib/form/interface';
-import NoSleep from 'nosleep.js';
 // import { ValidateErrorEntity } from 'rc-field-form/lib/interface';s
 import styles from './Controls.module.scss';
 import Timer from '../Timer';
@@ -28,8 +27,6 @@ const Controls: React.FC = () => {
   // const [countDownTime, setCountDownTime] = useState<number>(0);
   // const [countDownTimer, setCountDownTimer] = useState<NodeJS.Timeout | undefined>();
   // const [sound, setSound] = useState<string>('');
-  const noSleep = new NoSleep();
-  noSleep.enable();
 
   // const audio = new Audio('/src/assets/sounds/pristine.mp3');
 
