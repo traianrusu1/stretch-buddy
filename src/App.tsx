@@ -9,7 +9,10 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Layout className="layout">
-        <Header>
+        <Header style={{ color: '#fff', fontSize: '24px' }}>
+          <Row justify="center">
+            <Col>Lengthen</Col>
+          </Row>
           {/* <div className="logo" />
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
             <Menu.Item key="1">nav 1</Menu.Item>
@@ -19,7 +22,7 @@ const App: React.FC = () => {
         </Header>
         <Content style={{ paddingTop: '20px', backgroundColor: '#fff' }}>
           <Row justify="center">
-            <Col xs={22} sm={20} md={12} lg={8} xl={6}>
+            <Col xs={20} sm={20} md={12} lg={8} xl={6}>
               <div className="site-layout-content">
                 <Dashboard />
               </div>

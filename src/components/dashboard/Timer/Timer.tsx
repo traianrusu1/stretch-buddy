@@ -73,8 +73,8 @@ const Timer: React.FC<Props> = ({ seconds, timeInbetween, sound, playSound }: Pr
 
   return (
     <div className={styles.timer}>
-      <Row className={styles.buttons}>
-        <Col span={12}>
+      <Row justify="center" className={styles.buttons}>
+        <Col>
           <Button
             type="primary"
             htmlType="button"
@@ -85,7 +85,8 @@ const Timer: React.FC<Props> = ({ seconds, timeInbetween, sound, playSound }: Pr
             Start
           </Button>
         </Col>
-        <Col span={12}>
+        <Col span={1} />
+        <Col>
           <Button
             type="primary"
             danger

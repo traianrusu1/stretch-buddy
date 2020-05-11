@@ -90,8 +90,8 @@ const Controls: React.FC = () => {
 
   return (
     <div className={styles.controls}>
-      <Row className={styles.bottomSpacer}>
-        <Col span={12}>
+      <Row className={styles.bottomSpacer} justify="space-between">
+        <Col>
           <Row justify="start" className={styles.quickButtonsContainer}>
             <Col>
               <Button
@@ -117,6 +117,8 @@ const Controls: React.FC = () => {
                 60
               </Button>
             </Col>
+          </Row>
+          <Row justify="start" className={styles.quickButtonsContainer}>
             <Col>
               <Button
                 value={90}
@@ -157,7 +159,8 @@ const Controls: React.FC = () => {
             </Col>
           </Row>
         </Col>
-        <Col span={12}>
+        {/* <Col span={4} /> */}
+        <Col>
           <Row justify="start" className={styles.quickButtonsContainer}>
             <Col>
               <Button
@@ -183,7 +186,8 @@ const Controls: React.FC = () => {
                 10
               </Button>
             </Col>
-
+          </Row>
+          <Row justify="start" className={styles.quickButtonsContainer}>
             <Col>
               <Button
                 value={15}
@@ -230,12 +234,12 @@ const Controls: React.FC = () => {
       </Row>
 
       {/* <Form.Item label="Sound" name="sound" initialValue={timerSound}> */}
-      <Row className={styles.bottomSpacer}>
+      <Row className={styles.bottomSpacer} justify="center">
         <Col
           className={[styles.inputContainer, styles.soundInput].join(' ')}
-          xs={24}
-          // sm={20}
-          // md={8}
+          // xs={20}
+          // sm={18}
+          // md={14}
           // lg={6}
           // xl={4}
         >
