@@ -35,7 +35,12 @@ const Timer: React.FC<Props> = ({ seconds, timeInbetween, sound, playSound }: Pr
   }, []);
 
   const handleSecondsUpdated = useCallback((): void => {
-    setTime(timer.getTimeValues().toString());
+    const timeArr = timer
+      .getTimeValues()
+      .toString()
+      .split(':');
+    const timeStr = [timeArr[1], timeArr[2]].join(':');
+    setTime(timeStr);
   }, []);
 
   useEffect(() => {
@@ -87,8 +92,8 @@ const Timer: React.FC<Props> = ({ seconds, timeInbetween, sound, playSound }: Pr
           </Button>
         </Col>
       </Row>
-      <Row>
-        <Col>{time}</Col>
+      <Row justify="center">
+        <Col className={styles.timerText}>{time}</Col>
       </Row>
     </div>
   );

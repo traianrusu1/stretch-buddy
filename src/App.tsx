@@ -17,7 +17,7 @@ const App: React.FC = () => {
             <Menu.Item key="3">nav 3</Menu.Item>
           </Menu> */}
         </Header>
-        <Content style={{ padding: '20px 50px' }}>
+        <Content style={{ padding: '20px 50px', backgroundColor: '#fff' }}>
           <div className="site-layout-content">
             <Dashboard />
           </div>

@@ -3,7 +3,7 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
-import { Form, InputNumber, Select, Row, Col } from 'antd';
+import { InputNumber, Select, Row, Col, Button } from 'antd';
 // import { Store } from 'antd/lib/form/interface';
 import NoSleep from 'nosleep.js';
 // import { ValidateErrorEntity } from 'rc-field-form/lib/interface';s
@@ -21,8 +21,8 @@ import Timer from '../Timer';
 // }
 
 const Controls: React.FC = () => {
-  const [seconds, setSeconds] = useState(6);
-  const [timeInbetween, setTimeInbetween] = useState(2);
+  const [seconds, setSeconds] = useState(60);
+  const [timeInbetween, setTimeInbetween] = useState(10);
   const [timerSound, setTimerSound] = useState('beyond-doubt');
   // const [timer] = useState<NodeJS.Timeout | undefined>();
   // const [countDownTime, setCountDownTime] = useState<number>(0);
@@ -93,38 +93,150 @@ const Controls: React.FC = () => {
 
   return (
     <div className={styles.controls}>
-      <Form>
-        <Row>
-          <Col span={12}>
-            <Form.Item
-              label="Seconds"
-              name="seconds"
-              initialValue={seconds}
+      <Row className={styles.bottomSpacer}>
+        <Col span={12}>
+          <Row justify="start" className={styles.quickButtonsContainer}>
+            <Col>
+              <Button
+                value={30}
+                className={styles.quickButton}
+                type="primary"
+                shape="circle"
+                size="large"
+                onClick={(): void => setSeconds(30)}
+              >
+                30
+              </Button>
+            </Col>
+            <Col>
+              <Button
+                value={60}
+                className={styles.quickButton}
+                type="primary"
+                shape="circle"
+                size="large"
+                onClick={(): void => setSeconds(60)}
+              >
+                60
+              </Button>
+            </Col>
+            <Col>
+              <Button
+                value={90}
+                className={styles.quickButton}
+                type="primary"
+                shape="circle"
+                size="large"
+                onClick={(): void => setSeconds(90)}
+              >
+                90
+              </Button>
+            </Col>
+            <Col>
+              <Button
+                value={120}
+                className={styles.quickButton}
+                type="primary"
+                shape="circle"
+                size="large"
+                onClick={(): void => setSeconds(120)}
+              >
+                120
+              </Button>
+            </Col>
+          </Row>
+          <Row>
+            <Col className={styles.inputContainer}>
+              {/* <Form.Item
+                label="Seconds"
+                name="seconds"
+                initialValue={seconds}
 
-              // rules={[{ required: true, message: 'Please input your username!' }]}
-            >
+                // rules={[{ required: true, message: 'Please input your username!' }]}
+              > */}
+              Seconds
+              <InputNumber min={1} value={seconds} onChange={(val): void => setSeconds(val || 0)} />
+              {/* </Form.Item> */}
+            </Col>
+          </Row>
+        </Col>
+        <Col span={12}>
+          <Row justify="start" className={styles.quickButtonsContainer}>
+            <Col>
+              <Button
+                value={5}
+                className={styles.quickButton}
+                type="primary"
+                shape="circle"
+                size="large"
+                onClick={(): void => setTimeInbetween(5)}
+              >
+                5
+              </Button>
+            </Col>
+            <Col>
+              <Button
+                value={10}
+                className={styles.quickButton}
+                type="primary"
+                shape="circle"
+                size="large"
+                onClick={(): void => setTimeInbetween(10)}
+              >
+                10
+              </Button>
+            </Col>
+
+            <Col>
+              <Button
+                value={15}
+                className={styles.quickButton}
+                type="primary"
+                shape="circle"
+                size="large"
+                onClick={(): void => setTimeInbetween(15)}
+              >
+                15
+              </Button>
+            </Col>
+            <Col>
+              <Button
+                value={20}
+                className={styles.quickButton}
+                type="primary"
+                shape="circle"
+                size="large"
+                onClick={(): void => setTimeInbetween(20)}
+              >
+                20
+              </Button>
+            </Col>
+          </Row>
+          <Row>
+            <Col className={styles.inputContainer}>
+              {/* <Form.Item
+                label="Time Inbetween"
+                name="timeInbetween"
+                initialValue={timeInbetween}
+                // rules={[{ required: true, message: 'Please input your username!' }]}
+              > */}
+              Time Inbetween
               <InputNumber
                 min={1}
-                // defaultValue={seconds}
-                // value={seconds}
-                onChange={(val): void => setSeconds(val || 0)}
+                value={timeInbetween}
+                onChange={(val): void => setTimeInbetween(val || 0)}
               />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item
-              label="Time Inbetween"
-              name="timeInbetween"
-              initialValue={timeInbetween}
-              // rules={[{ required: true, message: 'Please input your username!' }]}
-            >
-              <InputNumber min={1} onChange={(val): void => setTimeInbetween(val || 0)} />
-            </Form.Item>
-          </Col>
-        </Row>
+              {/* </Form.Item> */}
+            </Col>
+          </Row>
+        </Col>
+      </Row>
 
-        <Form.Item label="Sound" name="sound" initialValue={timerSound}>
-          <Select onChange={handleSoundChange}>
+      {/* <Form.Item label="Sound" name="sound" initialValue={timerSound}> */}
+      <Row className={styles.bottomSpacer}>
+        <Col className={styles.inputContainer}>
+          Sound
+          <Select value={timerSound} className={styles.soundInput} onChange={handleSoundChange}>
             <Select.Option value="beyond-doubt">beyond-doubt</Select.Option>
             <Select.Option value="bullfrog">bullfrog</Select.Option>
             <Select.Option value="clearly">clearly</Select.Option>
@@ -140,17 +252,19 @@ const Controls: React.FC = () => {
             <Select.Option value="to-the-point">to-the-point</Select.Option>
             <Select.Option value="unconvinced">unconvinced</Select.Option>
           </Select>
-        </Form.Item>
-        <div>
-          <Timer
-            seconds={seconds}
-            playSound={playSound}
-            sound={timerSound}
-            timeInbetween={timeInbetween}
-          />
-        </div>
-        {/* <div className={styles.timeDisplay}>{countDownTime}</div> */}
-      </Form>
+        </Col>
+      </Row>
+
+      {/* </Form.Item> */}
+      <div>
+        <Timer
+          seconds={seconds}
+          playSound={playSound}
+          sound={timerSound}
+          timeInbetween={timeInbetween}
+        />
+      </div>
+      {/* <div className={styles.timeDisplay}>{countDownTime}</div> */}
     </div>
   );
 };
