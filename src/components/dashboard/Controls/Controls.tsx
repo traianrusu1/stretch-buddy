@@ -3,11 +3,12 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
-import { InputNumber, Select, Row, Col, Button } from 'antd';
+import { InputNumber, Select, Row, Col } from 'antd';
 // import { Store } from 'antd/lib/form/interface';
 // import { ValidateErrorEntity } from 'rc-field-form/lib/interface';s
 import styles from './Controls.module.scss';
 import Timer from '../Timer';
+import { Button, ButtonGroupQuad } from '../..';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 // const sound = require('../../../assets/sounds/pristine.mp3');
@@ -23,6 +24,19 @@ const Controls: React.FC = () => {
   const [seconds, setSeconds] = useState(60);
   const [timeInbetween, setTimeInbetween] = useState(10);
   const [timerSound, setTimerSound] = useState('beyond-doubt');
+  const defaultSecondsValues = {
+    30: 30,
+    60: 60,
+    90: 90,
+    120: 120,
+  };
+  const defaulttimeInbetweenValues = {
+    5: 5,
+    10: 10,
+    15: 15,
+    20: 20,
+  };
+
   // const [timer] = useState<NodeJS.Timeout | undefined>();
   // const [countDownTime, setCountDownTime] = useState<number>(0);
   // const [countDownTimer, setCountDownTimer] = useState<NodeJS.Timeout | undefined>();
@@ -92,57 +106,62 @@ const Controls: React.FC = () => {
     <div className={styles.controls}>
       <Row className={styles.bottomSpacer} justify="space-between">
         <Col>
-          <Row justify="start" className={styles.quickButtonsContainer}>
-            <Col>
-              <Button
-                value={30}
-                className={styles.quickButton}
-                type="primary"
-                shape="circle"
-                size="large"
-                onClick={(): void => setSeconds(30)}
+          <Row>
+            <ButtonGroupQuad myProp="temp">
+              <Row justify="start" className={styles.quickButtonsContainer}>
+                <Col>
+                  <Button
+                    selected={seconds === defaultSecondsValues[30]}
+                    placement="tl"
+                    onClick={(): void => setSeconds(defaultSecondsValues[30])}
+                  >
+                    {defaultSecondsValues[30]}
+                  </Button>
+                </Col>
+                <Col>
+                  <Button
+                    placement="tr"
+                    selected={seconds === defaultSecondsValues[60]}
+                    // value={60}
+                    // className={styles.quickButton}
+                    // type="primary"
+                    // shape="circle"
+                    // size="large"
+                    onClick={(): void => setSeconds(defaultSecondsValues[60])}
+                  >
+                    {defaultSecondsValues[60]}
+                  </Button>
+                </Col>
+              </Row>
+              <Row
+                justify="start"
+                className={[styles.quickButtonsContainer, styles.bottomSpacer].join(' ')}
               >
-                30
-              </Button>
-            </Col>
-            <Col>
-              <Button
-                value={60}
-                className={styles.quickButton}
-                type="primary"
-                shape="circle"
-                size="large"
-                onClick={(): void => setSeconds(60)}
-              >
-                60
-              </Button>
-            </Col>
-          </Row>
-          <Row justify="start" className={styles.quickButtonsContainer}>
-            <Col>
-              <Button
-                value={90}
-                className={styles.quickButton}
-                type="primary"
-                shape="circle"
-                size="large"
-                onClick={(): void => setSeconds(90)}
-              >
-                90
-              </Button>
-            </Col>
-            <Col>
-              <Button
-                value={120}
-                className={styles.quickButton}
-                type="primary"
-                shape="circle"
-                size="large"
-                onClick={(): void => setSeconds(120)}
-              >
-                120
-              </Button>
-            </Col>
+                <Col>
+                  <Button
+                    placement="bl"
+                    selected={seconds === defaultSecondsValues[90]}
+                    // value={90}
+                    // className={styles.quickButton}
+                    // type="primary"
+                    // shape="circle"
+                    // size="large"
+                    onClick={(): void => setSeconds(defaultSecondsValues[90])}
+                  >
+                    {defaultSecondsValues[90]}
+                  </Button>
+                </Col>
+                <Col>
+                  <Button
+                    onClick={(): void => setSeconds(defaultSecondsValues[120])}
+                    placement="br"
+                    selected={seconds === defaultSecondsValues[120]}
+                  >
+                    {defaultSecondsValues[120]}
+                  </Button>
+                </Col>
+              </Row>
+            </ButtonGroupQuad>
           </Row>
           <Row>
             <Col className={styles.inputContainer}>
@@ -164,52 +183,63 @@ const Controls: React.FC = () => {
           <Row justify="start" className={styles.quickButtonsContainer}>
             <Col>
               <Button
-                value={5}
-                className={styles.quickButton}
-                type="primary"
-                shape="circle"
-                size="large"
-                onClick={(): void => setTimeInbetween(5)}
+                placement="tl"
+                selected={timeInbetween === defaulttimeInbetweenValues[5]}
+                // value={5}
+                // className={styles.quickButton}
+                // type="primary"
+                // shape="circle"
+                // size="large"
+                onClick={(): void => setTimeInbetween(defaulttimeInbetweenValues[5])}
               >
-                5
+                {defaulttimeInbetweenValues[5]}
               </Button>
             </Col>
             <Col>
               <Button
-                value={10}
-                className={styles.quickButton}
-                type="primary"
-                shape="circle"
-                size="large"
-                onClick={(): void => setTimeInbetween(10)}
+                placement="tr"
+                selected={timeInbetween === defaulttimeInbetweenValues[10]}
+                // value={10}
+                // className={styles.quickButton}
+                // type="primary"
+                // shape="circle"
+                // size="large"
+                onClick={(): void => setTimeInbetween(defaulttimeInbetweenValues[10])}
               >
-                10
+                {defaulttimeInbetweenValues[10]}
               </Button>
             </Col>
           </Row>
-          <Row justify="start" className={styles.quickButtonsContainer}>
+          <Row
+            justify="start"
+            className={[styles.quickButtonsContainer, styles.bottomSpacer].join(' ')}
+          >
             <Col>
               <Button
-                value={15}
-                className={styles.quickButton}
-                type="primary"
-                shape="circle"
-                size="large"
-                onClick={(): void => setTimeInbetween(15)}
+                placement="bl"
+                selected={timeInbetween === defaulttimeInbetweenValues[15]}
+                // value={15}
+                // className={styles.quickButton}
+                // type="primary"
+                // shape="circle"
+                // size="large"
+                onClick={(): void => setTimeInbetween(defaulttimeInbetweenValues[15])}
               >
-                15
+                {defaulttimeInbetweenValues[15]}
               </Button>
             </Col>
             <Col>
               <Button
-                value={20}
-                className={styles.quickButton}
-                type="primary"
-                shape="circle"
-                size="large"
-                onClick={(): void => setTimeInbetween(20)}
+                placement="br"
+                selected={timeInbetween === defaulttimeInbetweenValues[20]}
+                // value={20}
+                // className={styles.quickButton}
+                // type="primary"
+                // shape="circle"
+                // size="large"
+                onClick={(): void => setTimeInbetween(defaulttimeInbetweenValues[20])}
               >
-                20
+                {defaulttimeInbetweenValues[20]}
               </Button>
             </Col>
           </Row>

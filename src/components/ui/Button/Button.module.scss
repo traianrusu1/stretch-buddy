@@ -1,0 +1,32 @@
+$borderColor: lightgrey;
+
+.button {
+  border: none;
+  // border-top: 1px solid lightgrey;
+  background-color: transparent;
+  cursor: pointer;
+  width: 3.7rem;
+  height: 3.7rem;
+}
+
+.tl {
+  border-right: 1px solid $borderColor;
+  border-bottom: 1px solid $borderColor;
+  // margin-bottom: ;
+}
+
+.tr {
+  border-bottom: 1px solid $borderColor;
+}
+
+.br {}
+
+.bl {
+  border-right: 1px solid $borderColor;
+}
+
+.selected {
+  color: lightgreen;
+  font-weight: 900;
+  // border-color: lightgreen;
+}
