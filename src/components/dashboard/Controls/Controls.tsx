@@ -3,9 +3,10 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
-import { InputNumber, Select, Row, Col } from 'antd';
+import { Select, Row, Col, Slider } from 'antd';
 // import { Store } from 'antd/lib/form/interface';
 // import { ValidateErrorEntity } from 'rc-field-form/lib/interface';s
+import { SliderValue } from 'antd/lib/slider';
 import styles from './Controls.module.scss';
 import Timer from '../Timer';
 import { Button, ButtonGroupQuad } from '../..';
@@ -164,7 +165,15 @@ const Controls: React.FC = () => {
             </ButtonGroupQuad>
           </Row>
           <Row>
-            <Col className={styles.inputContainer}>
+            <Col flex={1}>
+              <Slider
+                step={10}
+                defaultValue={defaultSecondsValues[60]}
+                min={10}
+                max={240}
+                value={seconds}
+                onChange={(value: SliderValue): void => setSeconds(value as number)}
+              />
               {/* <Form.Item
                 label="Seconds"
                 name="seconds"
@@ -172,8 +181,8 @@ const Controls: React.FC = () => {
 
                 // rules={[{ required: true, message: 'Please input your username!' }]}
               > */}
-              Seconds
-              <InputNumber min={1} value={seconds} onChange={(val): void => setSeconds(val || 0)} />
+              {/* Seconds
+              <InputNumber min={1} value={seconds} onChange={(val): void => setSeconds(val || 0)} /> */}
               {/* </Form.Item> */}
             </Col>
           </Row>
@@ -244,19 +253,27 @@ const Controls: React.FC = () => {
             </Col>
           </Row>
           <Row>
-            <Col className={styles.inputContainer}>
+            <Col flex={1}>
+              <Slider
+                step={5}
+                value={timeInbetween}
+                onChange={(value: SliderValue): void => setTimeInbetween(value as number)}
+                min={0}
+                max={120}
+              />
+
               {/* <Form.Item
                 label="Time Inbetween"
                 name="timeInbetween"
                 initialValue={timeInbetween}
                 // rules={[{ required: true, message: 'Please input your username!' }]}
               > */}
-              Time Inbetween
+              {/* Time Inbetween
               <InputNumber
                 min={1}
                 value={timeInbetween}
                 onChange={(val): void => setTimeInbetween(val || 0)}
-              />
+              /> */}
               {/* </Form.Item> */}
             </Col>
           </Row>
