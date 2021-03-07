@@ -19,6 +19,8 @@ const timerTimeInbetween = new EasyTimer();
 const Timer: React.FC<Props> = ({ seconds, timeInbetween, sound, playSound }: Props) => {
   const [time, setTime] = useState('');
 
+  console.log('!!!', seconds);
+
   // timer.start(/* config */);
   const handleStart = (): void => {
     console.log('TIMER Start');
@@ -34,7 +36,9 @@ const Timer: React.FC<Props> = ({ seconds, timeInbetween, sound, playSound }: Pr
 
   const handleReset = (): void => {
     console.log('TIMER Reset');
-    timer.reset();
+    timer.stop();
+    timer.start({ countdown: true, startValues: { seconds } });
+
     noSleep.disable();
   };
 
@@ -101,7 +105,6 @@ const Timer: React.FC<Props> = ({ seconds, timeInbetween, sound, playSound }: Pr
             Reset
           </Button>
         </Col>
-        {/* <Col span={1} /> */}
         <Col>
           <Button
             type="primary"
