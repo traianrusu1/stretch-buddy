@@ -105,7 +105,12 @@ const Controls: React.FC = () => {
 
   return (
     <div className={styles.controls}>
-      <Row className={styles.bottomSpacer} justify="space-between">
+      <Row className={styles.bottomSpacerSmall} justify="space-around">
+        <Col className={styles.heading}>Main</Col>
+        <Col className={styles.heading}>Rest</Col>
+      </Row>
+
+      <Row className={styles.bottomSpacer} justify="space-around">
         <Col>
           <Row>
             <ButtonGroupQuad myProp="temp">
@@ -279,7 +284,6 @@ const Controls: React.FC = () => {
           </Row>
         </Col>
       </Row>
-
       {/* <Form.Item label="Sound" name="sound" initialValue={timerSound}> */}
       <Row className={styles.bottomSpacer} justify="center">
         <Col
@@ -309,7 +313,6 @@ const Controls: React.FC = () => {
           </Select>
         </Col>
       </Row>
-
       {/* </Form.Item> */}
       <div>
         <Timer
